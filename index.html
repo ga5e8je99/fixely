@@ -1,0 +1,765 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <!-- Basic -->
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <!-- Mobile Metas -->
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  <!-- Site Metas -->
+  <meta name="keywords" content="" />
+  <meta name="description" content="" />
+  <meta name="author" content="" />
+
+  <title>Inance</title>
+
+  <!-- slider stylesheet -->
+  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css" />
+  <!-- bootstrap core css -->
+  <link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
+  <!-- font awesome style -->
+  <link rel="stylesheet" type="text/css" href="css/font-awesome.min.css" />
+
+  <!-- Custom styles for this template -->
+  <link href="css/style.css" rel="stylesheet" />
+  <!-- responsive style -->
+  <link href="css/responsive.css" rel="stylesheet" />
+  <style>
+    .carousel-overlay img {
+      height: 500px;
+      object-fit: cover;
+    }
+  
+    .carousel-inner .carousel-overlay::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.5); /* تغميق الصور */
+      z-index: 1;
+    }
+  
+    .carousel-caption {
+      z-index: 2;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      text-align: center;
+      color: #fff;
+    }
+  
+    .carousel-caption h5 {
+      font-size: 2.5rem;
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+  
+    .carousel-caption p {
+      font-size: 1.2rem;
+      max-width: 600px;
+    }
+  
+    .highlight {
+      color: #ffd000; /* لون مميز للكلمات */
+      font-weight: bold;
+    }
+    .description-section {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+      align-items: center;
+      padding: 40px;
+    }
+  
+    .description-section .description {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+      padding: 40px;
+    }
+  
+    .description-section .description h2 {
+      font-size: 2rem;
+      font-weight: bold;
+      color: #333;
+    }
+  
+    .description-section .description p {
+      font-size: 1rem;
+      color: #555;
+      line-height: 1.6;
+    }
+  
+    .description-section .description .highlight {
+      color: #ff6002;
+      font-weight: bold;
+    }
+  
+    .description-section .description .learn-more-btn {
+      background-color: #0a0f43;
+      color: #fff;
+      border: none;
+      padding: 10px 20px;
+      font-size: 1rem;
+      cursor: pointer;
+      border-radius: 5px;
+      transition: background-color 0.3s ease;
+    }
+  
+    .description-section .description .learn-more-btn:hover {
+      background-color: #0056b3;
+    }
+  
+    .description-section .image img {
+      width: 100%;
+      height: auto;
+      border-radius: 10px;
+      object-fit: cover;
+    }
+  
+    /* Responsive Design */
+    @media screen and (max-width: 768px) {
+      .description-section {
+        grid-template-columns: 1fr;
+      }
+  
+      .description-section .image {
+        order: -1;
+      }
+  
+      .description-section .description {
+        text-align: center;
+      }
+    }
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+  
+    body {
+      font-family: Arial, sans-serif;
+    }
+  
+    .fade-in-section {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+      align-items: center;
+      padding: 40px;
+      opacity: 0; /* Initially hidden */
+      transform: translateY(20px); /* Slight offset for animation */
+      transition: opacity 1s ease-out, transform 1s ease-out; /* Smooth transition */
+    }
+  
+    .fade-in-section.visible {
+      opacity: 1; /* Fully visible */
+      transform: translateY(0); /* Reset position */
+    }
+  
+    .fade-in-section .description {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+  
+    .fade-in-section .description h2 {
+      font-size: 2rem;
+      font-weight: bold;
+      color: #333;
+    }
+  
+    .fade-in-section .description p {
+      font-size: 1rem;
+      color: #555;
+      line-height: 1.6;
+    }
+  
+    .fade-in-section .description .highlight {
+      color: #ff6002;
+      font-weight: bold;
+    }
+  
+    .fade-in-section .description .learn-more-btn {
+      background-color: #0a0f43;
+      color: #fff;
+      border: none;
+      padding: 10px 20px;
+      font-size: 1rem;
+      cursor: pointer;
+      border-radius: 5px;
+      transition: background-color 0.3s ease;
+    }
+  
+    .fade-in-section .description .learn-more-btn:hover {
+      background-color: #0056b3;
+    }
+  
+    .fade-in-section .image img {
+      width: 100%;
+      height: auto;
+      border-radius: 10px;
+      object-fit: cover;
+    }
+  
+    /* Responsive Design */
+    @media screen and (max-width: 768px) {
+      .fade-in-section {
+        grid-template-columns: 1fr;
+      }
+  
+      .fade-in-section .image {
+        order: -1;
+      }
+  
+      .fade-in-section .description {
+        text-align: center;
+      }
+    }
+    .stats-section {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 20px;
+      text-align: center;
+      padding: 40px;
+      background-color: #f9f9f9;
+    }
+  
+    .stat-box {
+      background: #fff;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease;
+    }
+  
+    .stat-box:hover {
+      transform: translateY(-10px);
+    }
+  
+    .stat-box .icon {
+      font-size: 3rem;
+      color: #0a0f43;
+      margin-bottom: 10px;
+    }
+  
+    .stat-box h3 {
+      font-size: 2.5rem;
+      color: #333;
+      margin: 10px 0;
+    }
+  
+    .stat-box p {
+      font-size: 1.2rem;
+      color: #666;
+    }
+  
+    @media screen and (max-width: 768px) {
+      .stats-section {
+        grid-template-columns: 1fr;
+      }
+    }
+    /* Contact Us Section */
+.contact-section {
+  display: grid;
+  grid-template-columns: 1fr;
+  justify-content: space-between;
+  padding: 50px;
+  background-color: #fff;
+  margin: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Contact Form */
+.form-container {
+  padding: 20px;
+ 
+}
+
+.form-container input[type="text"],
+.form-container input[type="email"],
+.form-container input[type="tel"],
+.form-container textarea,
+.form-container button {
+  width: 100%;
+  padding: 10px;
+  margin-top: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.form-container button {
+  background-color: #0a0f43;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.form-container button:hover {
+  background-color: #0056b3;
+}
+
+/* Google Maps */
+.map-container {
+  height: 400px;
+  
+  padding: 20px;
+}
+
+.map-container iframe {
+  width: 100%;
+  height: 100%;
+  border-radius: 10px;
+}
+.get-started-section {
+  background: #f4f9f4;
+  padding: 50px 0;
+  text-align: center;
+  color: #333;
+}
+
+.get-started-section h2 {
+  font-size: 36px;
+  margin-bottom: 15px;
+  font-weight: bold;
+}
+
+.get-started-section p {
+  font-size: 18px;
+  margin-bottom: 25px;
+  line-height: 1.5;
+}
+
+.get-started-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin-top: 20px;
+}
+
+.btn {
+  display: inline-block;
+  padding: 15px 30px;
+  text-decoration: none;
+  font-weight: bold;
+  background: #0a0f43;
+  color: white;
+  border-radius: 10px;
+  transition: background 0.3s ease;
+}
+
+.btn:hover {
+  background: #0056b3;
+}
+
+.btn-secondary {
+  background: #6c757d;
+}
+
+.btn-secondary:hover {
+  background: #495057;
+}
+.carousel-caption{
+  bottom: none !important;
+  right: none !important;
+  left: none !important;
+  z-index: 3;
+
+}
+.carousel-indicators{
+  z-index: 3;
+}
+/* Sponsors Section */
+.sponsors-section {
+  padding: 50px 0;
+  background-color: #f9f9f9;
+  text-align: center;
+  color: #333;
+}
+
+.sponsors-section h2 {
+  font-size: 36px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.sponsors-section p {
+  font-size: 18px;
+  margin-bottom: 20px;
+  line-height: 1.5;
+  color: #666;
+}
+
+.sponsor-logos {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 30px;
+  padding-top: 20px;
+}
+
+.sponsor {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 15px;
+  transition: transform 0.3s ease;
+}
+
+.sponsor img {
+  width: 150px;
+  height: auto;
+  object-fit: cover;
+}
+
+.sponsor p {
+  font-weight: bold;
+  margin-top: 10px;
+  font-size: 16px;
+}
+
+/* Hover effect */
+.sponsor:hover {
+  transform: scale(1.05);
+}
+/* Styles for the Sponsors section */
+.sponsors-section {
+  padding: 50px;
+  background-color: #f4f4f4;
+  text-align: center;
+}
+
+.sponsors-section h2 {
+  font-size: 36px;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+.sponsors-section p {
+  font-size: 18px;
+  color: #666;
+  margin-bottom: 20px;
+}
+
+.sponsor-logos {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+  margin-top: 20px;
+}
+
+.sponsor {
+  background-color: #fff;
+  padding: 30px;
+  width: 250px;
+  height: 250px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid #ccc;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  transition: transform 0.3s;
+  overflow: hidden;
+  text-align: center;
+}
+
+.sponsor img {
+  max-width: 100%;
+  max-height: 150px;
+  object-fit: cover;
+  margin-bottom: 10px;
+}
+
+.sponsor p {
+  font-weight: bold;
+  font-size: 18px;
+  color: #333;
+}
+
+.sponsor:hover {
+  transform: scale(1.1);
+}
+/* Styles for the Footer */
+.footer {
+  background-color: #222;
+  color: #fff;
+  text-align: center;
+  padding: 20px 0;
+  position: relative;
+  bottom: 0;
+  width: 100%;
+  font-weight: bold;
+  font-size: 16px;
+}
+
+.footer p {
+  margin: 0;
+  font-family: Arial, sans-serif;
+}
+
+
+  </style>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+</head>
+
+<body>
+  <div class="hero_area">
+    <!-- header section strats -->
+    <header class="header_section">
+      <div class="header_top">
+        <div class="container-fluid">
+          <div class="contact_nav">
+            <a href="">
+              <i class="fa fa-phone" aria-hidden="true"></i>
+              <span>
+                Call : +01 111111111
+              </span>
+            </a>
+            <a href="">
+              <i class="fa fa-envelope" aria-hidden="true"></i>
+              <span>
+                Email : filxy@gmail.com
+              </span>
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class="header_bottom">
+        <div class="container-fluid">
+          <nav class="navbar navbar-expand-lg custom_nav-container ">
+            <a class="navbar-brand" href="index.html">
+              <span>
+                <img src='images/logo.png' style='width:100px;'>
+              </span>
+            </a>
+
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+              <span class=""> </span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+              <ul class="navbar-nav ">
+                <li class="nav-item active">
+                  <a class="nav-link" href="index.html">Home <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="about.html"> About</a>
+                </li>
+                <li class="nav-item ">
+                  <a class="nav-link" href="service.html">Services</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="tool.html">Product</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="login.html" style="color:#ff6002;">Login</a>
+                </li>
+                <li class="nav-item" >
+                  <a class="nav-link" id="accountButton"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" width="30" height="30" x="0" y="0" viewBox="0 0 32 32" style="enable-background:new 0 0 512 512" xml:space="preserve" class=""><g><g data-name="Layer 2"><path d="M16 17a6 6 0 1 1 6-6 6 6 0 0 1-6 6zm0-10a4 4 0 1 0 4 4 4 4 0 0 0-4-4z" fill="#FF6002" opacity="1" data-original="#000000" class=""></path><path d="M16 31a15 15 0 0 1-11.59-5.49l-.52-.64.52-.63a15 15 0 0 1 23.18 0l.52.63-.52.64A15 15 0 0 1 16 31zm-9.49-6.12a13 13 0 0 0 19 0 13 13 0 0 0-19 0z" fill="#FF6002" opacity="1" data-original="#000000" class=""></path><path d="M16 31a15 15 0 1 1 11.59-5.49A15 15 0 0 1 16 31zm0-28a13 13 0 1 0 13 13A13 13 0 0 0 16 3z" fill="#FF6002" opacity="1" data-original="#000000" class=""></path><path d="M5.18 24.88S15.25 36.13 25.5 26l1.32-1.12S18.26 16 9.57 21.33z" fill="#FF6002" opacity="1" data-original="#000000" class=""></path><circle cx="16" cy="11" r="5" fill="#FF6002" opacity="1" data-original="#000000" class=""></circle></g></g></svg></a>
+                </li>
+              </ul>
+            </div>
+          </nav>
+        </div>
+      </div>
+    </header>
+    <!-- end header section -->
+  </div>
+  <div class="bd-example">
+    <div id="carouselExampleCaptions" class="carousel slide" data-ride="carousel" data-interval="3000">
+      <ol class="carousel-indicators">
+        <li data-target="#carouselExampleCaptions" data-slide-to="0" class="active"></li>
+        <li data-target="#carouselExampleCaptions" data-slide-to="1"></li>
+        <li data-target="#carouselExampleCaptions" data-slide-to="2"></li>
+      </ol>
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+          <div class="carousel-overlay">
+            <img src="https://planonsoftware.com/upload_mm/d/8/d/4844_fullimage_planon%20maintenance%20management.jpg" class="d-block w-100" alt="Maintenance Image">
+            <div class="carousel-caption">
+              <h5 class="animate__animated animate__fadeIn">
+                Reliable <span class="highlight">Maintenance</span> Solutions
+              </h5>
+              <p class="animate__animated animate__fadeIn animate__delay-1s">
+                Efficient and cost-effective maintenance services to keep your systems running smoothly.
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="carousel-item">
+          <div class="carousel-overlay">
+            <img src="https://hitechfm.com/wp-content/uploads/2021/08/Top-Maintenance-Company.jpg" class="d-block w-100" alt="Maintenance Image">
+            <div class="carousel-caption">
+              <h5 class="animate__animated animate__fadeIn">
+                Expert <span class="highlight">Team</span> at Your Service
+              </h5>
+              <p class="animate__animated animate__fadeIn animate__delay-1s">
+                Our experienced professionals ensure top-notch quality in every task.
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="carousel-item">
+          <div class="carousel-overlay">
+            <img src="https://cdn.prod.website-files.com/65afd8dc16873da38e2b5ecb/6601738688a2c8cc9467f115_2021_07_handyman-with-tool-belt.jpeg" class="d-block w-100" alt="Maintenance Image">
+            <div class="carousel-caption">
+              <h5 class="animate__animated animate__fadeIn">
+                Comprehensive <span class="highlight">Plans</span> for You
+              </h5>
+              <p class="animate__animated animate__fadeIn animate__delay-1s">
+                Tailored solutions for all your maintenance needs.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <a class="carousel-control-prev" href="#carouselExampleCaptions" role="button" data-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+      </a>
+      <a class="carousel-control-next" href="#carouselExampleCaptions" role="button" data-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+      </a>
+    </div>
+  </div>
+  <section class="description-section fade-in-section">
+    <div class="description">
+      <h2>Your Reliable <span class="highlight">Maintenance</span> Partner</h2>
+      <p>
+        At <span class="highlight">Maintenance Hub</span>, we pride ourselves on being your trusted partner for all things maintenance. 
+        Whether it’s <b>residential</b>, <b>commercial</b>, or <b>industrial</b>, we offer a comprehensive range of services designed to meet 
+        your unique needs. Our highly trained and experienced team leverages the latest tools and techniques to deliver 
+        <b>efficient</b>, <b>cost-effective</b>, and <b>reliable</b> solutions that minimize downtime and maximize performance.
+      </p>
+      <p>
+        From routine inspections and preventive maintenance to emergency repairs, we’ve got you covered. 
+        With a commitment to <b>quality</b> and <b>customer satisfaction</b>, we ensure that every project is completed 
+        to the highest standards. Let us help you maintain a seamless operation and enjoy peace of mind knowing that your 
+        assets are in safe hands.
+      </p>
+      <p>
+        Choose <span class="highlight">Maintenance Hub</span> for innovative solutions, unparalleled expertise, and service 
+        excellence that you can count on every step of the way.
+      </p>
+      
+    </div>
+    <div class="image">
+      <img src="https://hitechfm.com/wp-content/uploads/2021/08/Top-Maintenance-Company.jpg" alt="Maintenance Image">
+    </div>
+  </section>
+  <section class="stats-section">
+    <div class="stat-box">
+      <i class="icon fa fa-shopping-cart"></i>
+      <h3 class="counter" data-target="1500">0</h3>
+      <p>Sales</p>
+    </div>
+    <div class="stat-box">
+      <i class="icon fa fa-users"></i>
+      <h3 class="counter" data-target="200">0</h3>
+      <p>Employees</p>
+    </div>
+    <div class="stat-box">
+      <i class="icon fa fa-star"></i>
+      <h3 class="counter" data-target="5.8">0</h3>
+      <p>Ratings</p>
+    </div>
+  </section>
+  <section class="contact-section">
+    <div class="form-container">
+        <h2>Contact Us</h2>
+        <form action="#" method="POST">
+            <input type="text" name="name" placeholder="Full Name" required>
+            <input type="email" name="email" placeholder="Email Address" required>
+            <input type="tel" name="phone" placeholder="Phone Number" required>
+            <textarea name="message" placeholder="Your Message" rows="4" required></textarea>
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+    <div class="map-container">
+        <h2>Google Maps</h2>
+        <!-- Google Maps embedded for Ismailia -->
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3433.390372053267!2d32.26649397536852!3d30.62295407463737!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14f8597f201556e7%3A0x9bd6053867337ff3!2sSuez%20Canal%20University!5e0!3m2!1sen!2seg!4v1734256024204!5m2!1sen!2seg" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    </div>
+</section>
+<!-- Sponsors Section -->
+<section id="sponsors" class="sponsors-section">
+  <div class="container">
+      <h2>Our Valued Sponsors</h2>
+      <p>We proudly showcase our esteemed partners and supporters.</p>
+
+      <div class="sponsor-logos">
+          <div class="sponsor">
+              <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSXUBzwLsnLZYmSKgEvFe-DZNLYDb6f3gKhww&s" alt="Suez Canal University">
+              <p>Suez Canal University</p>
+          </div>
+          <div class="sponsor">
+              <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTkow0YuLP0WwjvGzhvGsPiWxOKCPi1xtDR8g&s" alt="Sina University">
+              <p>Sina University</p>
+          </div>
+          <div class="sponsor">
+              <img src="https://img.youm7.com/ArticleImgs/2018/1/10/64825-5--%D9%88%D8%A7%D8%AC%D9%87%D8%A9-%D8%A7%D9%84%D9%86%D8%A7%D8%AF%D9%89-%D8%A7%D9%84%D8%A5%D8%B3%D9%85%D8%A7%D8%B9%D9%8A%D9%84%D9%89.jpg" alt="Ismaili Stadium">
+              <p>Ismaili Stadium</p>
+          </div>
+          <div class="sponsor">
+              <img src="https://www.elyoumelekhbary.com/upload/library/U/5/img/images/2%286%29.jpg" alt="Canal Stadium">
+              <p>Canal Stadium</p>
+          </div>
+      </div>
+  </div>
+</section>
+
+<!-- Get Started Section -->
+<section id="getStartedSection" class="get-started-section">
+  <div class="container">
+      <h2>Get Started with Us</h2>
+      <p>Start your journey with us today. Sign up or explore our services.</p>
+
+      <div class="get-started-buttons">
+          <a href="signup.html" class="btn">Get Stated</a>
+
+      </div>
+  </div>
+</section>
+
+<!-- Copyright Section -->
+<footer class="footer">
+  <p>&copy; 2024 Fixly. All Rights Reserved.</p>
+</footer>
+
+
+
+
+
+
+
+
+  <script src="js/index.js"> </script>
+   <script>
+    
+   </script>
+ 
+  
+  <script src="js/jquery-3.4.1.min.js"></script>
+  <script src="js/bootstrap.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js">
+  </script>
+  <script src="js/custom.js"></script>
+  <!-- Google Map -->
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCh39n5U-4IoWpsVGUHWdqB6puEkhRLdmI&callback=myMap"></script>
+  <!-- End Google Map -->
+
+
+</body>
+
+</html> 

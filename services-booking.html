@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Service Booking</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            background-color: #f1f5f8;
+        }
+        .service-details {
+            max-width: 600px;
+            margin: auto;
+            text-align: center;
+            background: #fff;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+            padding: 30px;
+        }
+        .service-details img {
+            width: 100%;
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+        .service-details h2 {
+            color: #0a0f43;
+            margin-bottom: 10px;
+        }
+        .service-details p {
+            font-size: 16px;
+            color: #555;
+            margin: 5px 0;
+        }
+        .service-details .price {
+            font-weight: bold;
+            color: #0a0f43;
+            font-size: 22px;
+            margin-top: 15px;
+        }
+        .book-now-btn {
+            display: inline-block;
+            padding: 12px 25px;
+            background-color: #0a0f43;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            margin-top: 20px;
+            transition: background-color 0.3s ease;
+        }
+        .book-now-btn:hover {
+            background-color: #0056b3;
+        }
+        .additional-info {
+            margin-top: 20px;
+            background: #f9f9f9;
+            border-radius: 10px;
+            padding: 15px;
+        }
+        .additional-info p {
+            color: #333;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+    <div class="service-details">
+        <img id="serviceImage" src="" alt="Service Image">
+        <h2 id="serviceName"></h2>
+        <p id="serviceDesc"></p>
+        <p class="price" id="servicePrice"></p>
+        <div class="additional-info">
+            <p><strong>Contact Us:</strong> +01 111111111</p>
+            <p><strong>Estimated Time:</strong> 2-3 days</p>
+        </div>
+        <a href="booking-form.html" class="book-now-btn">Book Now</a>
+    </div>
+
+    <script>
+        // Fetching service data from LocalStorage
+        const serviceData = JSON.parse(localStorage.getItem('selectedService'));
+        if (serviceData) {
+            document.getElementById('serviceImage').src = serviceData.image;
+            document.getElementById('serviceName').textContent = serviceData.name;
+            document.getElementById('serviceDesc').textContent = serviceData.desc;
+            document.getElementById('servicePrice').textContent = `Price: ${serviceData.price}`;
+        } else {
+            document.body.innerHTML = '<p>No service selected. Please go back and select a service.</p>';
+        }
+    </script>
+</body>
+</html>

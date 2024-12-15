@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add New Service - Fixly</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        
+        .service-container {
+            background: #fff;
+            padding: 40px;
+            width: 400px;
+            border-radius: 15px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+            text-align: center;
+        }
+        
+        h2 {
+            font-weight: bold;
+            color: #333;
+        }
+        
+        form input[type="text"],
+        form input[type="number"],
+        form textarea,
+        form input[type="file"],
+        button {
+            width: 100%;
+            padding: 12px;
+            margin: 10px 0;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+            display: inline-block;
+            text-align: center;
+        }
+        
+        form textarea {
+            resize: vertical;
+            height: 100px;
+        }
+        
+        button {
+            background-color: #0a0f43;
+            color: white;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        
+        button:hover {
+            background-color: #0056b3;
+        }
+        
+    </style>
+</head>
+<body>
+
+    <div class="service-container">
+        <h2>Add New Service</h2>
+
+        <form id="serviceForm">
+            <input type="text" id="name" placeholder="Service Name" required>
+            
+            <input type="file" id="image" name="image" accept="image/*" required>
+            
+            <input type="text" id="price" placeholder="Price (e.g., 500$)" required>
+            
+            <input type="number" id="point" placeholder="Point (e.g., 30)" required>
+
+            <textarea id="desc" rows="4" placeholder="Service Description" required></textarea>
+
+            <input type="text" id="title" placeholder="Service Title (e.g., Car Repair)" required>
+
+            <button type="submit">Add Service</button>
+        </form>
+    </div>
+
+    <script>
+        document.getElementById('serviceForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+
+            const formData = new FormData();
+            formData.append('name', document.getElementById('name').value);
+            formData.append('image', document.getElementById('image').files[0]);
+            formData.append('price', document.getElementById('price').value);
+            formData.append('point', document.getElementById('point').value);
+            formData.append('desc', document.getElementById('desc').value);
+            formData.append('title', document.getElementById('title').value);
+
+            try {
+                const response = await fetch('https://fixly-umber.vercel.app/fixly/api/service/create', {
+                    method: 'POST',
+                    body: formData
+                });
+
+                const result = await response.json();
+
+                if (response.ok) {
+                    alert('Service added successfully');
+                    window.location.reload();
+                } else {
+                    alert('Failed to add service: ' + result.message);
+                }
+            } catch (error) {
+                console.error('Service Error:', error);
+                alert('Failed to add service. Please try again.');
+            }
+        });
+    </script>
+
+</body>
+</html>

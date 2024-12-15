@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            background-color: #f9f9f9;
+        }
+
+        .checkout-container {
+            max-width: 600px;
+            margin: auto;
+            background: #fff;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+            padding: 20px;
+        }
+
+        .checkout-container h2 {
+            text-align: center;
+            color: #0a0f43;
+            margin-bottom: 20px;
+        }
+
+        .payment-option {
+            margin: 15px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            padding: 15px;
+            cursor: pointer;
+        }
+
+        .payment-option:hover {
+            background-color: #f1f1f1;
+        }
+
+        .payment-details {
+            display: none;
+            margin-top: 10px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        .submit-btn {
+            display: block;
+            width: 100%;
+            background-color: #0a0f43;
+            color: white;
+            border: none;
+            padding: 10px;
+            font-size: 18px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+
+        .submit-btn:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="checkout-container">
+        <h2>Checkout</h2>
+
+        <!-- اختيار الدفع نقدًا -->
+        <div class="payment-option" id="cashOption">
+            <input type="radio" name="paymentMethod" id="cashRadio" value="cash">
+            <label for="cashRadio">Pay with Cash</label>
+            <div class="payment-details" id="cashDetails">
+                <p>You have chosen to pay with cash upon delivery.</p>
+            </div>
+        </div>
+
+        <!-- اختيار الدفع بالكارت -->
+        <div class="payment-option" id="cardOption">
+            <input type="radio" name="paymentMethod" id="cardRadio" value="card">
+            <label for="cardRadio">Pay with Card</label>
+            <div class="payment-details" id="cardDetails">
+                <label for="cardNumber">Card Number</label>
+                <input type="text" id="cardNumber" placeholder="Enter your card number" maxlength="16">
+
+                <label for="cardHolder">Card Holder Name</label>
+                <input type="text" id="cardHolder" placeholder="Enter card holder's name">
+
+                <label for="expiryDate">Expiry Date</label>
+                <input type="text" id="expiryDate" placeholder="MM/YY" maxlength="5">
+
+                <label for="cvv">CVV</label>
+                <input type="text" id="cvv" placeholder="CVV" maxlength="3">
+            </div>
+        </div>
+
+        <button class="submit-btn" onclick="submitPayment()">Confirm Payment</button>
+    </div>
+
+    <script>
+        // عرض تفاصيل طريقة الدفع بناءً على الاختيار
+        const cashRadio = document.getElementById('cashRadio');
+        const cardRadio = document.getElementById('cardRadio');
+        const cashDetails = document.getElementById('cashDetails');
+        const cardDetails = document.getElementById('cardDetails');
+
+        cashRadio.addEventListener('change', () => {
+            cashDetails.style.display = 'block';
+            cardDetails.style.display = 'none';
+        });
+
+        cardRadio.addEventListener('change', () => {
+            cardDetails.style.display = 'block';
+            cashDetails.style.display = 'none';
+        });
+
+        // إرسال بيانات الدفع
+        function submitPayment() {
+            if (cashRadio.checked) {
+                alert('Checkout successfully!');
+                window.location.href = 'index.html'; // إعادة التوجيه إلى صفحة index.html
+            } else if (cardRadio.checked) {
+                const cardNumber = document.getElementById('cardNumber').value;
+                const cardHolder = document.getElementById('cardHolder').value;
+                const expiryDate = document.getElementById('expiryDate').value;
+                const cvv = document.getElementById('cvv').value;
+
+                if (cardNumber && cardHolder && expiryDate && cvv) {
+                    alert('Checkout successfully!');
+                    window.location.href = 'index.html'; // إعادة التوجيه إلى صفحة index.html
+                } else {
+                    alert('Please fill in all card details.');
+                }
+            } else {
+                alert('Please select a payment method.');
+            }
+        }
+    </script>
+</body>
+
+</html>

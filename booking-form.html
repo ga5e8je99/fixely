@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Booking Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            background-color: #f1f5f8;
+        }
+        .booking-form {
+            max-width: 600px;
+            margin: auto;
+            background: #fff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+        }
+        .booking-form h2 {
+            color: #0a0f43;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        .booking-form label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 5px;
+            color: #333;
+        }
+        .booking-form input, .booking-form textarea, .booking-form select {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .booking-form button {
+            width: 100%;
+            padding: 12px;
+            background-color: #0a0f43;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-weight: bold;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        .booking-form button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <form class="booking-form">
+        <h2>Book Your Service</h2>
+        <label for="serviceName">Service Name</label>
+        <input type="text" id="serviceName" name="serviceName" readonly>
+        
+        <label for="fullName">Full Name</label>
+        <input type="text" id="fullName" name="fullName" placeholder="Enter your name" required>
+        
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" placeholder="Enter your email" required>
+        
+        <label for="phone">Phone Number</label>
+        <input type="tel" id="phone" name="phone" placeholder="Enter your phone number" required>
+        
+        <label for="date">Booking Date</label>
+        <input type="date" id="date" name="date" required>
+        
+        <label for="notes">Additional Notes</label>
+        <textarea id="notes" name="notes" placeholder="Enter any additional details"></textarea>
+        
+        <button type="submit" onclick="n()">Confirm Booking</button>
+    </form>
+
+    <script>
+        // جلب اسم الخدمة من LocalStorage وعرضه
+        const serviceData = JSON.parse(localStorage.getItem('selectedService'));
+        if (serviceData) {
+            document.getElementById('serviceName').value = serviceData.name;
+        }
+        function n(){
+            alert('Booking successful');
+            open('/index.html')
+        }
+    </script>
+</body>
+</html>

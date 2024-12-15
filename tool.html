@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <!-- Basic -->
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <!-- Mobile Metas -->
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  <!-- Site Metas -->
+  <meta name="keywords" content="" />
+  <meta name="description" content="" />
+  <meta name="author" content="" />
+
+  <title>Inance</title>
+
+  <!-- slider stylesheet -->
+  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css" />
+  <!-- bootstrap core css -->
+  <link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
+  <!-- font awesome style -->
+  <link rel="stylesheet" type="text/css" href="css/font-awesome.min.css" />
+
+  <!-- Custom styles for this template -->
+  <link href="css/style.css" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.scss">
+  <!-- responsive style -->
+  <link href="css/responsive.css" rel="stylesheet" />
+<style>
+  .services-container {
+    padding: 40px;
+    text-align: center;
+}
+
+.services-container h2 {
+    font-weight: bold;
+    color: #0a0f43;
+    margin-bottom: 20px;
+}
+
+/* Search Bar Styles */
+.search-container {
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    margin: 20px 0;
+    gap: 10px;
+}
+
+#searchName, #searchPrice {
+    padding: 10px;
+    width: 250px;
+    font-size: 18px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    outline: none;
+}
+
+button {
+    padding: 10px 20px;
+    background-color: #0a0f43;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-weight: bold;
+    font-size: 18px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+/* Service Cards Styles */
+.services-cards {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    padding: 20px;
+}
+
+.service-card {
+    background: #fff;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+    width: 300px;
+    transition: transform 0.3s;
+    overflow: hidden;
+    text-align: center;
+}
+
+.service-card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+.service-info {
+    padding-top: 10px;
+}
+
+.service-card h3 {
+    font-size: 24px;
+    color: #0a0f43;
+    margin: 5px 0;
+}
+
+.service-card p {
+    font-size: 16px;
+    color: #555;
+}
+
+.service-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 25px rgba(0, 123, 255, 0.4);
+}
+
+
+
+</style>
+</head>
+
+<body>
+  <div class="hero_area">
+    <!-- header section strats -->
+    <header class="header_section">
+      <div class="header_top">
+        <div class="container-fluid">
+          <div class="contact_nav">
+            <a href="">
+              <i class="fa fa-phone" aria-hidden="true"></i>
+              <span>
+                Call : +01 111111111
+              </span>
+            </a>
+            <a href="">
+              <i class="fa fa-envelope" aria-hidden="true"></i>
+              <span>
+                Email : filxy@gmail.com
+              </span>
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class="header_bottom">
+        <div class="container-fluid">
+          <nav class="navbar navbar-expand-lg custom_nav-container ">
+            <a class="navbar-brand" href="index.html">
+              <span>
+                <img src='images/logo.png' style='width:100px;'>
+              </span>
+            </a>
+
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+              <span class=""> </span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+              <ul class="navbar-nav ">
+                <li class="nav-item ">
+                  <a class="nav-link" href="index.html">Home <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="about.html"> About</a>
+                </li>
+                <li class="nav-item active">
+                  <a class="nav-link" href="service.html">Services</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="tool.html">Product</a>
+                </li>
+              </ul>
+            </div>
+          </nav>
+        </div>
+      </div>
+    </header>
+    <!-- end header section -->
+  </div>
+
+  <div id="services" class="services-cards">
+    <!-- سيتم إضافة الكروت هنا ديناميكياً -->
+  </div>
+
+
+  <footer class="footer">
+  <p>&copy; 2024 Fixly. All Rights Reserved.</p>
+</footer>
+
+  <!-- footer section -->
+<script>
+  function searchServices() {
+    const nameInput = document.getElementById('searchName').value.toLowerCase();
+    const priceInput = document.getElementById('searchPrice').value;
+    const services = document.getElementsByClassName('service-card');
+
+    for (let i = 0; i < services.length; i++) {
+        const serviceName = services[i].getAttribute('data-name').toLowerCase();
+        const servicePrice = services[i].getAttribute('data-price');
+
+        const nameMatch = serviceName.includes(nameInput);
+        const priceMatch = priceInput ? servicePrice === priceInput : true;
+
+        if (nameMatch && priceMatch) {
+            services[i].style.display = 'block';
+        } else {
+            services[i].style.display = 'none';
+        }
+    }
+}
+const servicesContainer = document.getElementById('services');
+
+  async function fetchProducts() {
+    try {
+      // جلب المنتجات من API
+      const response = await fetch('https://fixly-umber.vercel.app/fixly/api/product/getall');
+      const result = await response.json();
+      const products = result.data;
+
+      // تفريغ الحاوية أولاً
+      servicesContainer.innerHTML = '';
+
+      // إنشاء كروت لكل منتج
+      products.forEach(product => {
+        // إنشاء العنصر الخارجي
+        const serviceCard = document.createElement('div');
+        serviceCard.className = 'service-card';
+        serviceCard.setAttribute('data-name', product.name);
+        serviceCard.setAttribute('data-price', product.price);
+
+        // صورة الخدمة
+        const serviceImage = document.createElement('img');
+        serviceImage.src = product.image[0];
+        serviceImage.alt = product.title;
+
+        // حاوية معلومات الخدمة
+        const serviceInfo = document.createElement('div');
+        serviceInfo.className = 'service-info';
+
+        // اسم المنتج
+        const serviceTitle = document.createElement('h3');
+        serviceTitle.textContent = product.title;
+
+        // السعر
+        const servicePrice = document.createElement('p');
+        servicePrice.innerHTML = `<strong>Price:</strong> ${product.price}`;
+
+        // الوصف
+        const serviceDesc = document.createElement('p');
+        serviceDesc.textContent = product.desc;
+
+        // تجميع المعلومات داخل الحاوية
+        serviceInfo.appendChild(serviceTitle);
+        serviceInfo.appendChild(servicePrice);
+        serviceInfo.appendChild(serviceDesc);
+
+        // تجميع الكارت
+        serviceCard.appendChild(serviceImage);
+        serviceCard.appendChild(serviceInfo);
+
+        // إضافة الكارت إلى الحاوية الرئيسية
+        servicesContainer.appendChild(serviceCard);
+      });
+    } catch (error) {
+      console.error('Error fetching products:', error);
+    }
+  }
+
+  // استدعاء الدالة عند تحميل الصفحة
+  fetchProducts();
+  // إنشاء زر الدفع
+const payNowButton = document.createElement('button');
+payNowButton.textContent = 'Proceed to Payment';
+payNowButton.className = 'pay-now-btn';
+
+// عند النقر على زر الدفع
+payNowButton.onclick = () => {
+    const selectedProduct = {
+        image: product.image[0],
+        title: product.title,
+        price: product.price,
+        desc: product.desc
+    };
+
+    // تخزين بيانات المنتج في localStorage
+    localStorage.setItem('selectedProduct', JSON.stringify(selectedProduct));
+
+    // الانتقال إلى صفحة الدفع
+    window.location.href = 'payment.html';
+};
+
+// إضافة الزر إلى البطاقة
+serviceInfo.appendChild(payNowButton);
+
+</script>
+  <script src="js/jquery-3.4.1.min.js"></script>
+  <script src="js/bootstrap.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js">
+  </script>
+  <script src="js/custom.js"></script>
+  <!-- Google Map -->
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCh39n5U-4IoWpsVGUHWdqB6puEkhRLdmI&callback=myMap"></script>
+  <!-- End Google Map -->
+
+
+</body>
+
+</html>
+<!-- const form = document.getElementById('productForm');
+    const productTableBody = document.getElementById('services-cards');
+
+    // Function to fetch and display products
+    async function fetchProducts() {
+        try {
+          const response = await fetch('https://fixly-umber.vercel.app/fixly/api/product/getall');
+          
+          // التحقق من أن الطلب تم بنجاح
+          if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+          }
+      
+          // تحويل الرد إلى JSON
+          const result = await response.json();
+      
+          // التحقق من وجود مفتاح "data" الذي يحتوي على المنتجات
+          const products = result.data;
+      
+          // مسح الجدول قبل إعادة ملئه
+          productTableBody.innerHTML = '';
+      
+          // إنشاء الصفوف داخل الجدول
+          products.forEach(product => {
+            const row = document.createElement('tr');
+            row.innerHTML = `
+              <td>${product.name}</td>
+              <td><img src="${product.image[0]}" alt="${product.name}" style="width: 100px; height: auto;"></td>
+              <td>${product.price}</td>
+              <td>${product.point}</td>
+              <td>${product.desc}</td>
+              <td>${product.title}</td>
+            `;
+            productTableBody.appendChild(row);
+          });
+        } catch (error) {
+          console.error('Error fetching products:', error);
+        }
+      }
+      
+      // استدعاء الدالة عند تحميل الصفحة
+      fetchProducts();
+       -->

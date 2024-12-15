@@ -1,0 +1,80 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f9;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.signup-container {
+    background: #fff;
+    padding: 30px;
+    width: 350px;
+    text-align: center;
+    border-radius: 15px;
+    position: relative;
+    z-index: 4;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.4);
+}
+
+.signup-container h2 {
+    font-weight: bold;
+    color: #333;
+}
+
+form input[type="text"],
+form input[type="email"],
+form input[type="password"],
+form input[type="tel"],
+button {
+    width: 100%;
+    padding: 12px;
+    margin: 10px 0;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+form input[type="text"]:focus,
+form input[type="email"]:focus {
+    outline: none;
+    border-color: #002b4e;
+    transition: 0.3s;
+}
+
+button {
+    background-color: #002b4e;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+button:hover {
+    background-color: #ff9d00;
+}
+.work-b{
+    background-image: url("https://gacs.world/wp-content/uploads/2022/03/WHAT-FACILITY-MANAGERS-SHOULD-KNOW-ABOUT-MAINTENANCE.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+}
+.user-b{
+    background-image: url("https://www.businessmadeagile.com/hubfs/ANEO%20Zero%20%281200%20x%20628%20px%29%20%286%29-1.png");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+}
+.shadow{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background-color: #00000058;
+}

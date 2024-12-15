@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            background-color: #f9f9f9;
+        }
+        .payment-container {
+            max-width: 600px;
+            margin: auto;
+            background: #fff;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+            padding: 20px;
+            text-align: center;
+        }
+        .payment-container img {
+            width: 100%;
+            border-radius: 10px;
+        }
+        .payment-container h2 {
+            color: #0a0f43;
+        }
+        .payment-container p {
+            font-size: 16px;
+            color: #555;
+        }
+        .payment-container .price {
+            font-weight: bold;
+            color: #0a0f43;
+            font-size: 20px;
+        }
+        .pay-btn {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #0a0f43;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            margin-top: 20px;
+        }
+        .pay-btn:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="payment-container">
+        <img id="productImage" src="" alt="Product Image">
+        <h2 id="productTitle"></h2>
+        <p id="productDesc"></p>
+        <p class="price" id="productPrice"></p>
+        <a href="checkout.html" class="pay-btn">Pay Now</a>
+    </div>
+
+    <script>
+        // استرجاع بيانات المنتج من localStorage
+        const productData = JSON.parse(localStorage.getItem('selectedProduct'));
+        if (productData) {
+            document.getElementById('productImage').src = productData.image;
+            document.getElementById('productTitle').textContent = productData.title;
+            document.getElementById('productDesc').textContent = productData.desc;
+            document.getElementById('productPrice').textContent = `Price: ${productData.price}`;
+        } else {
+            document.body.innerHTML = '<p>No product selected. Please go back and select a product.</p>';
+        }
+    </script>
+</body>
+</html>
